@@ -1,0 +1,21 @@
+What happens if you facet on a continuous variable?
+ANSWER: A table is created for the entire range of the continuous variable (e.g. ggplot(data = mpg) + 
++     geom_point(mapping = aes(x = displ, y = hwy)) + 
++     facet_wrap(~ hwy, nrow = 2)
+
+What do the empty cells in plot with facet_grid(drv ~ cyl) mean? How do they relate to this plot? ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = drv, y = cyl))
+ANSWER: empty cells are indicating that there are no cars that have 5 cylinders with all-wheel drive, etc. 
+The second argument is essentially showing the same data, but each point in the sections are not displayed in ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = drv, y = cyl))
+  
+What plots does the following code make? ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ .)
+ANSWER: plots displ vs. hwy and subdivides into facets over the rows column of different "drv".
+
+What does . do?
+ANSWER: "." allows you to not include a categorical variable in the column section. If "." is replaced by another variable (e.g. drv ~ cyl) it will facet drv in the column, cyl in the row section
+
+Read ?facet_wrap. What does nrow do? What does ncol do? What other options control the layout of the individual panels? Why doesn’t facet_grid() have nrow and ncol arguments?
+ANSWER: nrow divides the rows into n number (e.g. nrow = 2 will display the chart into two rows). facet_grid is including two variables across row and column already.
