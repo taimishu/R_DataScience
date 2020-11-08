@@ -1,0 +1,28 @@
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
+  
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+  
+##############################EXERCISES################################
+##What’s gone wrong with this code? Why are the points not blue?
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+
+ANSWER: In order to add color to the plot, "color" argument must be outside of the parenthesis. e.g:
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue"))
+
+##Which variables in mpg are categorical? Which variables are continuous? (Hint: type ?mpg to read the documentation for the dataset). How can you see this information when you run mpg?
+
+ANSWER: all are categorical except cty and hwy
+
+##Map a continuous variable to color, size, and shape. How do these aesthetics behave differently for categorical vs. continuous variables?
+
+ANSWER: the shape aesthetic has discrete shapes and cannot be mapped to a continuous variable. Color and size aesthetics can, however.
+
+##What does the stroke aesthetic do? What shapes does it work with? (Hint: use ?geom_point)
+
+ANSWER: ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) + geom_point(shape = 21, color = "black", fill = "white", size = 5, stroke = 5)
+Stroke aesthetic refers to the thickness of the circle plots.
+
+What happens if you map an aesthetic to something other than a variable name, like aes(colour = displ < 5)? Note, you’ll also need to specify x and y.
+
+ANSWER: ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) + geom_point(aes(color = displ < 5))
+Created categorical variables of displ < 5. Blue if true, red if false.
